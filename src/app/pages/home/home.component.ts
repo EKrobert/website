@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OrderDetailsService } from '../../services/order-details.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  constructor (private service:OrderDetailsService){}
+
+  foodData:any;
+
+  ngOnInit(): void {
+    this.foodData = this.service.foodDetails;
+  }
+
+
 
 }
